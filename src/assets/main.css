@@ -1,11 +1,11 @@
 @import './base.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-
   font-weight: normal;
+  font-family: 'Poppins', serif;
 }
 
 a,
@@ -22,14 +22,4 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
 }

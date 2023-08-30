@@ -3,7 +3,7 @@ export default {
 name : "App",
 data() {
   return {
-    name : "Joe",
+    user_name : "Joe",
     idOfDiv : "thisIsDivID",
     isButtonDisabled : true,
     form : "<span><i>This is a dynamic HTML</i></span>",
@@ -40,19 +40,24 @@ methods: {
 </script>
 
 <template >
-  <h1>{{ name }}</h1>
+  <h1>{{ user_name }}</h1>
   <h1 v-html="form"></h1>
-  <div v-bind:id="idOfDiv"></div>
-  <button v-bind:disabled="isButtonDisabled">disabled</button>
-  <p v-bind:class="isButtonDisabled && 'valid'"> & condition</p>
-  <p v-bind:class="validInput ?'valid' : 'inValid'"> ternary condition</p>
-  <p v-bind:class="[arrayCondition1 && arrayCondition2 ? 'valid' : 'inValid']"> array class binding</p>
-  <p v-bind:class="{
+  <div :id="idOfDiv"></div>
+  <button :disabled="isButtonDisabled">disabled</button>
+  <p :class="isButtonDisabled && 'valid'"> & condition</p>
+  <p :class="validInput ?'valid' : 'inValid'"> ternary condition</p>
+  <p :class="[arrayCondition1 && arrayCondition2 ? 'valid' : 'inValid']"> array class binding</p>
+  <p :class="{
     valid : validInput,
     invalid : !validInput,
     none : arrayCondition1
   }">Object Class binding</p>
-  <input v-bind:class="validInput ? 'valid' : 'inValid'" type="text" name="name input" placeholder="Enter your name">
+  <input 
+    v-bind:class="validInput ? 'valid' : 'inValid'"
+    type="text" 
+    id="user_name"
+  v-model="user_name"     
+  />
 
   <!-- conditional rendering -->
 
@@ -76,11 +81,11 @@ methods: {
   <!-- Methods -->
 
   <h1>Methods{{ add(12) }}</h1>
-
+  <!-- Event Handling -->
+  <button v-on:click="validInput = !validInput">Click me</button>
 </template>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
 .valid{
   border: 2px solid lime;
   color : green;
