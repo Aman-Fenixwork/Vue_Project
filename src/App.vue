@@ -30,6 +30,11 @@ data() {
       "flex-direction" : "column"
     }
   }
+},
+methods: {
+  add(num:number){
+    return num < this.age 
+  }
 }
 }
 </script>
@@ -66,6 +71,12 @@ data() {
   <h1 v-for="name in names" :key="name">{{ name }}</h1>
   <h1 v-for="(name, index) in names" :key="name">{{index+1}} {{ name }}</h1>
   <span v-for="(person,index) in ageGroup" :key="index">{{person.name}}{{ person.age }}</span>
+  <span v-for="(value,key,index) in flexStyles" :key="index">{{ index }} {{ key }} : {{ value }}</span>
+
+  <!-- Methods -->
+
+  <h1>Methods{{ add(12) }}</h1>
+
 </template>
 
 <style scoped>
