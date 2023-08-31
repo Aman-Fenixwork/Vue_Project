@@ -28,14 +28,24 @@ data() {
       "justify-content" :"center",
       "align-items" : "center",
       "flex-direction" : "column"
-    }
+    },
+    numbersArray : [123,34,234,234524,5424334,34]
   }
 },
-methods: {
-  add(num:number){
-    return num < this.age 
+  methods: {
+    add(num:number){
+      return num < this.age 
+    },
+    handleForm(event : any){
+      event.preventDefault();
+    },
+
+  },
+  computed : {
+    calculateSum(){
+      return this.numbersArray.reduce((total:number, num:number) => total+num)
+    }
   }
-}
 }
 </script>
 
@@ -83,7 +93,16 @@ methods: {
   <h1>Methods{{ add(12) }}</h1>
   <!-- Event Handling -->
   <button v-on:click="validInput = !validInput">Click me</button>
+
+  <!-- Modifiers -->
+  <form v-on:submit.prevent="handleForm">
+    <input type="text" name="name" placeholder="Enter your name" v-model.trim.lazy="user_name"     />
+    <input @keyup.enter="handleForm" type="submit" value="Submit">
+  </form>
+
+  <h1> {{ calculateSum }}</h1>
 </template>
+ <!-- Calculating sum of all elements in an array -->
 
 <style scoped>
 .valid{
